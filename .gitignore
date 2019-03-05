@@ -1,9 +1,3 @@
-# Ignore configuration files that may contain sensitive information.
-sites/*/settings*.php
-
-# Ignore paths that contain user-generated content.
-sites/*/files
-sites/*/private
 .env
 /nbproject
 /nbproject/private/
@@ -11,3 +5,7 @@ sites/*/private
 .project
 vendor
 composer.lock
+files/
+sites/*/files
+sites/*/private
+sites/*/translations
