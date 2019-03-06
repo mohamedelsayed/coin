@@ -19,7 +19,7 @@ global $base_url;
                 <span class="icon icon-bar"></span>
             </button>
             <!-- lOGO TEXT HERE -->
-            <a href="index.html" class="navbar-brand">
+            <a href="<?php echo $base_url; ?>" class="navbar-brand">
                 <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>logo.png" />
             </a>
         </div>

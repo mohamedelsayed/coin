@@ -15,6 +15,15 @@
 #Developer a:hover{
     color: #404041;
 }
+#admin-menu{
+    display: none;
+}
+body.admin-menu{
+    margin-top: 0px !important;
+}
+body.admin-menu.adminimal-menu:before{
+    height: 0px;
+}
 /*.pagination{
         width: 100%;
         float: left;

@@ -1,5 +1,4 @@
 <?php global $sitelang; ?>
-
 <!-- FOOTER -->
 <footer id="footer" data-stellar-background-ratio="0.5">
     <div class="container">
@@ -17,8 +16,6 @@
         </div>
     </div>
 </footer>
-
 <div id="Developer" class="hidden-xs hidden-sm hidden-md hidden-lg">
     Developed by <a hreflang="<?php echo $sitelang; ?>" href="http://www.mohamedelsayed.net" target="_blank">Mohamed Elsayed</a>
 </div>
-

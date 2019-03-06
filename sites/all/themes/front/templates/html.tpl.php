@@ -46,9 +46,9 @@ $base_url_with_lang = elsayed_get_base_url_with_lang();
     }
     ?>
     <body id="top" data-spy="scroll" class="<?php print $classes . $additional_body_classes; ?>" <?php print $attributes; ?>>
-        <?php print $page_top; ?>
+        <?php // print $page_top; ?>
         <?php print $page; ?>
-        <?php print $page_bottom; ?>
+        <?php // print $page_bottom; ?>
         <?php print $scripts; ?>
         <script type="text/javascript">
             $(document).ready(function () {
