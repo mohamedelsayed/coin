@@ -4,7 +4,7 @@
  * @author Author "Mohamed Elsayed"
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.themwl.org/
- * @copyright Copyright (c) 2017 Programming by "http://www.mohamedelsayed.net"
+ * @copyright Copyright (c) 2019 Programming by "http://www.mohamedelsayed.net"
  */
 function front_theme() {
     $items = array();

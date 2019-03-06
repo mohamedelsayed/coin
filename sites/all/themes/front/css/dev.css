@@ -1,26 +1,26 @@
 #Developer{
-	display:none;
-	float: left;
-	height: 30px;
-	width: 100%;
-	text-align: center;
-	font-family: "Comic Sans MS", cursive, sans-serif;		
-	background-color: #CECECE;
-	color: #FFFFFF;
+    display:none;
+    float: left;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #CECECE;
+    color: #FFFFFF;
 }
 #Developer a{
-	color: #FFFFFF;
-	text-decoration: none;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 #Developer a:hover{
-	color: #404041;
+    color: #404041;
 }
-.pagination{
-	width: 100%;
-	float: left;        
+/*.pagination{
+        width: 100%;
+        float: left;
 }
 #sendmail_ajaxLoading{
-    display:none;   
+    display:none;
     width: 160px;
     height:17px;
     background-image: url('../img/tloading.gif');
@@ -30,48 +30,48 @@
    margin-bottom: 20px;
 }
 .mesage-pop-bg {
-	position:fixed;
-	width:100%;
-	top:0;
-	z-index:101;
-	left:0;
-	height:100%;
-	background:#33465F;
-	opacity: 0.6;
+        position:fixed;
+        width:100%;
+        top:0;
+        z-index:101;
+        left:0;
+        height:100%;
+        background:#33465F;
+        opacity: 0.6;
 }
 #mesagecontent {
-	background: #fff none repeat scroll 0 0;
+        background: #fff none repeat scroll 0 0;
     border-radius: 3px;
     box-shadow: 0 0 10px #33465f;
     left: 14%;
-	height: 500px;
-	margin-top: 25px;
+        height: 500px;
+        margin-top: 25px;
     position: fixed;
     width: 900px;
     z-index: 102;
 }
 .mesage-pop {
-	display:none;
+        display:none;
 }
 #mesagecontent h4 {
-	background:#eeeeee;
-	padding:5px 10px;
-	float: right;
-	width: 100%;
-	color:#00000;
-	border-bottom:solid 1px #BDC3C7;
-	text-transform:capitalize;
-	-webkit-border-radius: 3px 3px 0 0;
-	-moz-border-radius: 3px 3px 0 0;
-	border-radius: 3px 3px 0 0;
+        background:#eeeeee;
+        padding:5px 10px;
+        float: right;
+        width: 100%;
+        color:#00000;
+        border-bottom:solid 1px #BDC3C7;
+        text-transform:capitalize;
+        -webkit-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
     font-size: 17px;
     font-weight: 500;
     line-height: 18px;
     margin: 0;
 }
 #mesagecontent > div, #mesagecontent > form {
-	margin: 0px;
-	height: 435px;
+        margin: 0px;
+        height: 435px;
 }
 .closealert, .closeeventpopoup, .closevacancypopoup, .closesendmailpopoup {
     cursor: pointer;
@@ -80,60 +80,60 @@
     top: 10px;
 }
 #get-touch{
-	margin-bottom: 50px;
+        margin-bottom: 50px;
 }
 .codecademy_icon{
-	width: 16px;
+        width: 16px;
     height:16px;
     background-image: url('../img/codecademy.jpg');
-    background-repeat: no-repeat;	
+    background-repeat: no-repeat;
     float: left;
     background-size: contain;
 }
 .codecademy_icon:hover{
-	width: 16px;
+        width: 16px;
     height:16px;
     background-image: url('../img/codecademy_hover.jpg');
-    background-repeat: no-repeat;	
+    background-repeat: no-repeat;
     background-size: contain;
 }
 .mostaql_icon{
-	width: 16px;
+        width: 16px;
     height:16px;
     background-image: url('../img/mostaql-icon.png');
-    background-repeat: no-repeat;	
+    background-repeat: no-repeat;
     float: left;
     background-size: contain;
 }
 .mostaql_icon:hover{
-	width: 16px;
+        width: 16px;
     height:16px;
     background-image: url('../img/mostaql-icon_hover.png');
-	background-size: contain;
+        background-size: contain;
 }
 .maintenancelogo {
-	margin-top: 25px;
-	margin-bottom: 25px;
-	text-align: center;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        text-align: center;
 }
 .maintenancetext {
-	font-size: 18px;
-	text-decoration: none;
-	color: #404041;
-	text-align: center;
+        font-size: 18px;
+        text-decoration: none;
+        color: #404041;
+        text-align: center;
 }
 .aboutme .about-heading p{
-	margin: 0;
-	margin-bottom: 5px;
+        margin: 0;
+        margin-bottom: 5px;
 }
 .view_more{
-	margin-top: 20px;
+        margin-top: 20px;
 }
 ul.pagination_in li{
-	float: left;
+        float: left;
 }
 .me_error{
-	border: 2px solid #e20612 !important;
+        border: 2px solid #e20612 !important;
 }
 .container_list{
     margin-bottom: 20px;
@@ -147,4 +147,4 @@ ul.pagination_in li{
 }
 .page_margin_bottom{
     margin-bottom: 50px;
-}
+}*/
