@@ -1,8 +1,8 @@
 <?php
 elsayed_redirect_user_to_admin();
 global $base_url;
+global $sitelang;
 ?>
-<?php global $sitelang; ?>
 <!-- PRE LOADER -->
 <section class="preloader">
     <div class="spinner">
@@ -35,9 +35,7 @@ global $base_url;
                 <li><a href="#contact" class="smoothScroll">Contact</a></li>
                 <li><a href="#" class="language">العربية</a></li>
                 <li class="social">
-                    <a href="#" class="fa fa-facebook-square" attr="facebook icon"></a>
-                    <a href="#" class="fa fa-twitter"></a>
-                    <a href="#" class="fa fa-instagram"></a>
+                    <?php include 'social.php'; ?>
                 </li>
             </ul>
         </div>

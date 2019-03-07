@@ -1576,41 +1576,48 @@ function elsayed_custom_setting_form($form, &$form_state) {
             '#required' => false,
             '#default_value' => variable_get('twitter_url', ''),
         );
-        $form['google_plus_url'] = array(
-            '#title' => __('Google Plus URL'),
+        $form['instagram_url'] = array(
+            '#title' => __('Instagram URL'),
             '#discription' => __(''),
             '#type' => 'textfield',
             '#required' => false,
-            '#default_value' => variable_get('google_plus_url', ''),
+            '#default_value' => variable_get('instagram_url', ''),
         );
-        $form['linkedin_url'] = array(
-            '#title' => __('Linkedin URL'),
-            '#discription' => __(''),
-            '#type' => 'textfield',
-            '#required' => false,
-            '#default_value' => variable_get('linkedin_url', ''),
-        );
-        $form['codecademy_url'] = array(
-            '#title' => __('Codecademy URL'),
-            '#discription' => __(''),
-            '#type' => 'textfield',
-            '#required' => false,
-            '#default_value' => variable_get('codecademy_url', ''),
-        );
-        $form['mostaql_url'] = array(
-            '#title' => __('Mostaql URL'),
-            '#discription' => __(''),
-            '#type' => 'textfield',
-            '#required' => false,
-            '#default_value' => variable_get('mostaql_url', ''),
-        );
-        $form['hackerrank_url'] = array(
-            '#title' => __('Hackerrank URL'),
-            '#discription' => __(''),
-            '#type' => 'textfield',
-            '#required' => false,
-            '#default_value' => variable_get('hackerrank_url', ''),
-        );
+//        $form['google_plus_url'] = array(
+//            '#title' => __('Google Plus URL'),
+//            '#discription' => __(''),
+//            '#type' => 'textfield',
+//            '#required' => false,
+//            '#default_value' => variable_get('google_plus_url', ''),
+//        );
+//        $form['linkedin_url'] = array(
+//            '#title' => __('Linkedin URL'),
+//            '#discription' => __(''),
+//            '#type' => 'textfield',
+//            '#required' => false,
+//            '#default_value' => variable_get('linkedin_url', ''),
+//        );
+//        $form['codecademy_url'] = array(
+//            '#title' => __('Codecademy URL'),
+//            '#discription' => __(''),
+//            '#type' => 'textfield',
+//            '#required' => false,
+//            '#default_value' => variable_get('codecademy_url', ''),
+//        );
+//        $form['mostaql_url'] = array(
+//            '#title' => __('Mostaql URL'),
+//            '#discription' => __(''),
+//            '#type' => 'textfield',
+//            '#required' => false,
+//            '#default_value' => variable_get('mostaql_url', ''),
+//        );
+//        $form['hackerrank_url'] = array(
+//            '#title' => __('Hackerrank URL'),
+//            '#discription' => __(''),
+//            '#type' => 'textfield',
+//            '#required' => false,
+//            '#default_value' => variable_get('hackerrank_url', ''),
+//        );
         $form['google_analytics_propertyid'] = array(
             '#title' => __('Google Analytics Property ID'),
             '#discription' => __(''),
