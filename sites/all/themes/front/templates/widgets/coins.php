@@ -1,6 +1,6 @@
-<?php global $sitelang; ?>
-<?php global $base_url; ?>
-
+<?php global $sitelang;
+global $base_url;
+?>
 <section id="team" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row">
@@ -375,4 +375,3 @@
 
     </div>
 </section>
-<!-- TESTIMONIAL -->

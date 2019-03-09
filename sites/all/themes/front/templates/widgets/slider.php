@@ -1,6 +1,6 @@
-<?php global $sitelang; ?>
 <?php
-$slider_widget = elsayed_get_slider_widget();
+global $sitelang;
+$slider_widget = elsayed_get_content_widget('slider');
 if (!empty($slider_widget)) {
     ?>
     <section id="home" class="slider" data-stellar-background-ratio="0.5">
@@ -24,26 +24,31 @@ if (!empty($slider_widget)) {
                         $slider_blank = $slider->field_blank[LANGUAGE_NONE][0]['value'];
                     }
                     $href_code = '';
+                    $have_link = 0;
                     if (trim($slider_link) != '') {
                         $blank_code = '';
                         if ($slider_blank) {
                             $blank_code = ' target="_blank" ';
                         }
                         $href_code = ' href="' . $slider_link . '" ' . $blank_code;
+                        $have_link = 1;
                     }
                     ?>
                     <div class="item item-first" style="background-image: url(<?php echo $image; ?>);">
-                        <a hreflang="<?php echo $sitelang; ?>" <?php echo $href_code; ?>>
-                            <div class="caption">
-                                <div class="container">
-                                    <div class="col-md-8 col-sm-12">
-                                        <h3>        <?php echo $slider_title; ?></h3>
-                                        <h1>        <?php echo $slider_second_title; ?></h1>
-                                        <!--<a href="#menu" class="section-btn btn btn-default smoothScroll">Discover Now</a>-->
-                                    </div>
+                        <?php /* I<a hreflang="<?php echo $sitelang; ?>" <?php echo $href_code; ?> > */ ?>
+                        <div class="caption">
+                            <div class="container">
+                                <div class="col-md-8 col-sm-12">
+                                    <h3>        <?php echo $slider_title; ?></h3>
+                                    <h1>        <?php echo $slider_second_title; ?></h1>
+                                    <?php if ($have_link == 1) { ?>
+                                        <a hreflang="<?php echo $sitelang; ?>" <?php echo $href_code; ?> class="section-btn btn btn-default smoothScroll">
+                                            <?php echo __('Discover Now'); ?></a>
+                                        <?php } ?>
                                 </div>
                             </div>
-                        </a>
+                        </div>
+                        <!--</a>-->
                     </div>
                 <?php } ?>
             </div>

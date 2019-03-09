@@ -24,21 +24,20 @@ body.admin-menu{
 body.admin-menu.adminimal-menu:before{
     height: 0px;
 }
-/*.pagination{
-        width: 100%;
-        float: left;
-}
 #sendmail_ajaxLoading{
     display:none;
     width: 160px;
     height:17px;
-    background-image: url('../img/tloading.gif');
+    background-image: url('../img/loading.gif');
     background-repeat: no-repeat;
-   float: none;
-   margin: auto;
-   margin-bottom: 20px;
+    float: none;
+    margin: auto;
+    margin-bottom: 20px;
 }
-.mesage-pop-bg {
+.error{
+    border: 2px solid #e20612 !important;
+}
+/*.mesage-pop-bg {
         position:fixed;
         width:100%;
         top:0;

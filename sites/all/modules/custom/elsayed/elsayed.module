@@ -13,8 +13,6 @@ function elsayed_init() {
     $GLOBALS['limit'] = 12;
     $GLOBALS['default_image'] = $GLOBALS['base_url'] . '/' . path_to_theme() . '/img/blank.png';
     elsayed_redirect_admin_to_dashboard();
-    $home_widgets = elsayed_get_home_widgets();
-    $GLOBALS['home_widgets'] = $home_widgets;
     global $sitelang;
     $sitelang = elsayed_get_language_from_url();
 }
@@ -55,13 +53,13 @@ function elsayed_menu() {
 //        'access arguments' => array('access content'),
 //        'delivery callback' => 'drupal_json_output',
 //    );
-    $items['projects'] = array(
-        'title' => 'Projects',
-        'page callback' => 'elsayed_projects',
-        'page arguments' => array(),
-        'type' => MENU_CALLBACK,
-        'access arguments' => array('access content'),
-    );
+//    $items['products'] = array(
+//        'title' => 'Products',
+//        'page callback' => 'elsayed_products',
+//        'page arguments' => array(),
+//        'type' => MENU_CALLBACK,
+//        'access arguments' => array('access content'),
+//    );
 //    $items['add_to_cart'] = array(
 //        'title' => 'Add to cart',
 //        'page callback' => 'elsayed_add_to_cart',
@@ -167,13 +165,13 @@ function elsayed_menu() {
         'weight' => -10,
         'file' => 'node.admin.inc',
     );
-    $items['certificates'] = array(
-        'title' => 'Certificates',
-        'page callback' => 'elsayed_certificates',
-        'page arguments' => array(),
-        'type' => MENU_CALLBACK,
-        'access arguments' => array('access content'),
-    );
+//    $items['certificates'] = array(
+//        'title' => 'Certificates',
+//        'page callback' => 'elsayed_certificates',
+//        'page arguments' => array(),
+//        'type' => MENU_CALLBACK,
+//        'access arguments' => array('access content'),
+//    );
     return $items;
 }
 
@@ -284,13 +282,13 @@ function elsayed_page_not_found_page() {
     return $output;
 }
 
-function elsayed_get_slider_widget() {
+function elsayed_get_content_widget($type = 'slider') {
     $start = 0;
     $limit = 10;
     $items = array();
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', 'slider')
+            ->entityCondition('bundle', $type)
             ->propertyCondition('status', 1)
             ->propertyOrderBy('created', 'DESC');
     $query->addMetaData('account', user_load(1));
@@ -325,7 +323,7 @@ function elsayed_contact_us_form() {
             if (isset($_POST['message'])) {
                 $message = $_POST['message'];
             }
-            $mailsubject = variable_get('site_name') . ' - ' . 'Contact Me';
+            $mailsubject = variable_get('site_name') . ' - ' . 'Contact Us';
             $emailTo = variable_get('contact_mail');
             $tpl = file_get_contents(drupal_get_path('module', 'elsayed') . '/emails/contactus.html');
             $html_message = str_replace(array('{{mailsubject}}', '{{name}}', '{{email}}', '{{subject}}', '{{message}}'), array($mailsubject, $name, $email, $subject, $message), $tpl);
@@ -346,39 +344,39 @@ function elsayed_contact_us_form() {
                 $mail->Subject = $mailsubject;
                 $mail->Body = $html_message;
                 $mail->AltBody = "This is the plain text version of the email content";
-                $recaptchaflag = 0;
-                if (isset($_POST['g-recaptcha-response'])) {
-                    $recaptcharesponse = $_POST['g-recaptcha-response'];
-                    $secret = '6Ldz9gATAAAAAElm5SbDIt3sfIkoC7f65ciHjGrt';
-                    $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $recaptcharesponse;
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, $url);
-                    curl_setopt_array($ch, array(
-                        CURLOPT_RETURNTRANSFER => TRUE,
-                    ));
-                    $response = curl_exec($ch);
-                    if ($response === FALSE) {
-                        //die(curl_error($ch));
-                    }
-                    $responseData = json_decode($response, TRUE);
-                    if (isset($responseData['success'])) {
-                        if ($responseData['success'] == 1) {
-                            $recaptchaflag = 1;
-                        }
-                    }
-                }
-                if ($recaptchaflag == 1) {
-                    if ($mail->send()) {
-                        //$data['msg'] = __('Thank you for your message. We will get back to you the soonest.');
-                        $data['error'] = 0;
-                    } else {
-                        //$data['msg'] = __('There was a problem sending the Email. Please try again.');
-                        $data['error'] = 1;
-                    }
+//                $recaptchaflag = 0;
+//                if (isset($_POST['g-recaptcha-response'])) {
+//                    $recaptcharesponse = $_POST['g-recaptcha-response'];
+//                    $secret = '6Ldz9gATAAAAAElm5SbDIt3sfIkoC7f65ciHjGrt';
+//                    $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $recaptcharesponse;
+//                    $ch = curl_init();
+//                    curl_setopt($ch, CURLOPT_URL, $url);
+//                    curl_setopt_array($ch, array(
+//                        CURLOPT_RETURNTRANSFER => TRUE,
+//                    ));
+//                    $response = curl_exec($ch);
+//                    if ($response === FALSE) {
+//                        //die(curl_error($ch));
+//                    }
+//                    $responseData = json_decode($response, TRUE);
+//                    if (isset($responseData['success'])) {
+//                        if ($responseData['success'] == 1) {
+//                            $recaptchaflag = 1;
+//                        }
+//                    }
+//                }
+//                if ($recaptchaflag == 1) {
+                if ($mail->send()) {
+                    //$data['msg'] = __('Thank you for your message. We will get back to you the soonest.');
+                    $data['error'] = 0;
                 } else {
                     //$data['msg'] = __('There was a problem sending the Email. Please try again.');
                     $data['error'] = 1;
                 }
+//                } else {
+//                    //$data['msg'] = __('There was a problem sending the Email. Please try again.');
+//                    $data['error'] = 1;
+//                }
             }
         }
     }
@@ -437,14 +435,14 @@ function elsayed_form_alter(&$form, &$form_state, $form_id) {
     if (isset($form['#node']) && $form_id == 'widget_node_form') {
         $info = field_info_field('field_identifier');
         $values = &$info['settings']['allowed_values'];
-        if (!isset($values['portfolio'])) {
-            $values['portfolio'] = 'Portfolio';
-            field_update_field($info);
-        }
-        if (!isset($values['contact'])) {
-            $values['contact'] = 'Contact me';
-            field_update_field($info);
-        }
+//        if (!isset($values['portfolio'])) {
+//            $values['portfolio'] = 'Portfolio';
+//            field_update_field($info);
+//        }
+//        if (!isset($values['contact'])) {
+//            $values['contact'] = 'Contact me';
+//            field_update_field($info);
+//        }
         /* $arg1 = arg(1);
           if($arg1 == 5){
           $form['field_video_file'][LANGUAGE_NONE][0]['#required'] = 1;
@@ -797,17 +795,23 @@ function elsayed_register_new_user($name, $mail, $pass1, $pass2, $field_first_na
     drupal_goto("$redirect");
 }
 
-function elsayed_get_projects($home = 0, $limit = 0, $page = 1) {
+function elsayed_get_products($limit = 0, $page = 1, $sectionId = 0, $new_arrival = 0, $hot_offers = 0) {
     $items = array();
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', 'project')
-            ->propertyCondition('status', 1);
-    //->propertyOrderBy('created', 'DESC');
-    if ($home != 0) {
-        $query->fieldCondition('field_show_in_home', 'value', $home, '=');
+            ->entityCondition('bundle', 'product')
+            ->propertyCondition('status', 1)
+            ->propertyOrderBy('nid', 'DESC');
+    if ($sectionId != 0) {
+        $query->fieldCondition('field_section', 'target_id', $sectionId, '=');
     }
-    $query->fieldOrderBy('field_weight', 'value', 'ASC');
+    if ($new_arrival != 0) {
+        $query->fieldCondition('field_new_arrival', 'value', $new_arrival, '=');
+    }
+    if ($hot_offers != 0) {
+        $query->fieldCondition('field_hot_offers', 'value', $hot_offers, '=');
+    }
+//    $query->fieldOrderBy('field_weight', 'value', 'ASC');
     $query->addMetaData('account', user_load(1));
     $result = $query->execute();
     $total_items_nids = array();
@@ -829,7 +833,7 @@ function elsayed_get_projects($home = 0, $limit = 0, $page = 1) {
     return $return;
 }
 
-function elsayed_projects() {
+function elsayed_products() {
     $output = '';
     return $output;
 }
@@ -872,16 +876,14 @@ function elsayed_draw_paging($page_count = 0, $page = 1) {
     }
     $return = '';
     if ($page_count > 1) {
-        $return .= '<div class="pagination">
-                <div class="row">
-                    <div class="col-md-12" style="text-align:center">
-                        <ul class="pagination_in">';
+        $return .= '<nav aria-label="Page navigation">
+                <ul class="pagination">';
         if ($page > 1) {
             $prev = $page - 1;
             $class = '';
             $a_begin = '<a href="' . $actual_link . $prev . '" title="' . __('Go to') . ' ' . $prev . '">';
             $a_end = '</a>';
-            $return .= '<li class="' . $class . '">' . $a_begin . __('Previous') . $a_end . '</li>';
+            $return .= '<li class="' . $class . '">' . $a_begin . '<span aria-hidden="true">&laquo;</span>' . $a_end . '</li>';
         }
         $step = 10;
         $start = $page - $step;
@@ -913,12 +915,10 @@ function elsayed_draw_paging($page_count = 0, $page = 1) {
             $class = '';
             $a_begin = '<a href="' . $actual_link . $next . '" title="Go to page ' . $next . '">';
             $a_end = '</a>';
-            $return .= '<li class="' . $class . '">' . $a_begin . __('Next') . $a_end . '</li>';
+            $return .= '<li class="' . $class . '">' . $a_begin . '<span aria-hidden="true">&raquo;</span>' . $a_end . '</li>';
         }
         $return .= '</ul>
-                    </div>
-                </div>
-            </div>';
+            </nav>';
     }
     return $return;
 }
