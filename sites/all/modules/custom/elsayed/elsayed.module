@@ -1802,3 +1802,37 @@ function elsayed_redirect_non_ssl_to_ssl() {
         }
     }
 }
+
+function elsayed_get_products_from_same_section($limit = 0, $sectionId = 0, $nid = 0) {
+    $page = 1;
+    $items = array();
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', 'product')
+            ->propertyCondition('nid', $nid, '!=')
+            ->propertyCondition('status', 1)
+            ->propertyOrderBy('nid', 'DESC');
+    if ($sectionId != 0) {
+        $query->fieldCondition('field_section', 'target_id', $sectionId, '=');
+    }
+    $query->addMetaData('account', user_load(1));
+    $result = $query->execute();
+    $total_items_nids = array();
+    if (isset($result['node'])) {
+        $total_items_nids = array_keys($result['node']);
+    }
+    $return = array();
+    if ($limit != 0) {
+        $start = ($page - 1) * $limit;
+        $total_count = count($total_items_nids);
+        $items_nids = array_slice($total_items_nids, $start, $limit);
+        $items = entity_load('node', $items_nids);
+//        $return['page_count'] = ceil($total_count / $limit);
+//        $return['items'] = $items;
+        $return = $items;
+    } else {
+        $items = entity_load('node', $total_items_nids);
+        $return = $items;
+    }
+    return $return;
+}

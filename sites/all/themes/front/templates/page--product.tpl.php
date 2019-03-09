@@ -29,11 +29,12 @@ if (!empty($product)) {
     }
     $product_section_title = '';
     $product_section_url = '#';
+    $sectionId = 0;
     if (isset($product->field_section[LANGUAGE_NONE][0]['target_id'])) {
-        $product_section_id = $product->field_section[LANGUAGE_NONE][0]['target_id'];
-        $product_section = node_load($product_section_id);
+        $sectionId = $product->field_section[LANGUAGE_NONE][0]['target_id'];
+        $product_section = node_load($sectionId);
         $product_section_title = $product_section->title;
-        $product_section_url = elsayed_get_node_url_by_id($product_section_id);
+        $product_section_url = elsayed_get_node_url_by_id($sectionId);
     }
     ?>
     <section id="about" data-stellar-background-ratio="0.5">
@@ -101,152 +102,72 @@ if (!empty($product)) {
         <?php } ?>
     <?php } ?>
 <?php } ?>
-<!-- Collections -->
-<section id="Collections" data-stellar-background-ratio="0.5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
-                    <h2>Also Check</h2>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <!-- MENU THUMB -->
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>table-collection.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>light.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <!-- MENU THUMB -->
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>table-collection.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>light.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <!-- MENU THUMB -->
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>table-collection.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>light.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <!-- MENU THUMB -->
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>table-collection.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>light.jpg" class="img-responsive" alt="">
-                    <div class="team-hover">
-                        <div class="team-item">
-                            <h4>Item Name</h4>
-                            <ul class="social-icon">
-                                <li><a href="#" class="fa fa-eye"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-info text-center">
-                    <h3><a href="#">Item Name</a></h3>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 <?php
+$limit = 8;
+$products = elsayed_get_products_from_same_section($limit, $sectionId, $product->nid);
+if (!empty($products)) {
+    ?>
+    <section id="Collections" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                        <h2><?php echo __('Also Check'); ?></h2>
+                    </div>
+                </div>
+                <?php
+                $i = 1;
+                foreach ($products as $key => $product) {
+                    $product_title = $product->title;
+                    $product_url = elsayed_get_node_url_by_id($product->nid);
+                    $product_second_title = '';
+                    if (isset($product->field_second_title[LANGUAGE_NONE][0]['value'])) {
+                        $product_second_title = $product->field_second_title[LANGUAGE_NONE][0]['value'];
+                    }
+                    $product_description = '';
+                    if (isset($product->body[LANGUAGE_NONE][0]['value'])) {
+                        $product_description = elsayed_cut_string($product->body[LANGUAGE_NONE][0]['value'], 250);
+                    }
+                    $image = $GLOBALS['default_image'];
+                    if (isset($product->field_images[LANGUAGE_NONE][0]['uri'])) {
+                        $image = image_style_url('medium', $product->field_images[LANGUAGE_NONE][0]['uri']);
+                    }
+//                        $delays = [0.2, 0.4, 0.6, 0.4];
+//                        if ($i > 4) {
+//                            $i = 1;
+//                        }
+//                        $delay = $delays[$i - 1];
+                    $new_line = 0;
+                    if ($i % 4 == 0) {
+                        $new_line = 1;
+                    }
+                    $i++;
+                    ?>
+                    <div class="col-md-3 col-sm-4">
+                        <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
+                            <img src="<?php echo $image; ?>" class="img-responsive" alt="<?php echo $product_title; ?>">
+                            <div class="team-hover">
+                                <div class="team-item">
+                                    <h4><?php echo $product_title; ?></h4>
+                                    <ul class="social-icon">
+                                        <li><a href="<?php echo $product_url; ?>" class="fa fa-eye"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info text-center">
+                            <h3><a href="<?php echo $product_url; ?>"><?php echo $product_title; ?></a></h3>
+                        </div>
+                    </div>
+                    <?php if ($new_line == 1) { ?>
+                        <div class="col-md-12 col-sm-12">&nbsp;</div>
+                    <?php } ?>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
+    <?php
+}
 include_once 'widgets' . DS . 'testimonial.php';
 include_once 'widgets' . DS . 'features.php';
 include_once 'widgets' . DS . 'contact.php';

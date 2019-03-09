@@ -83,7 +83,7 @@ $section = node_load($sectionId);
                                 </div>
                             </div>
                             <div class="team-info">
-                                <h3><?php echo $product_title; ?></h3>
+                                <h3><a href="<?php echo $product_url; ?>"><?php echo $product_title; ?></a></h3>
                                 <p><?php echo $product_second_title; ?></p>
                             </div>
                         </div>
