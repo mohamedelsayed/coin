@@ -15,6 +15,7 @@ include_once 'common' . DS . 'header.php';
 include_once 'widgets' . DS . 'slider.php';
 include_once 'widgets' . DS . 'ourstory.php';
 include_once 'widgets' . DS . 'coins.php';
+include_once 'widgets' . DS . 'products.php';
 include_once 'widgets' . DS . 'testimonial.php';
 include_once 'widgets' . DS . 'features.php';
 include_once 'widgets' . DS . 'contact.php';
