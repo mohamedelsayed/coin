@@ -49,7 +49,11 @@ if (!$is_front_page) {
                 <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link5; ?>" class="smoothScroll"><?php echo __('Offers'); ?></a></li>
                 <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link6; ?>" class="smoothScroll"><?php echo __('Testimonials'); ?></a></li>
                 <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link7; ?>" class="smoothScroll"><?php echo __('Contact'); ?></a></li>
-                <li><a hreflang="<?php echo $sitelang; ?>" href="#" class="language">العربية</a></li>
+                <?php if ($sitelang == 'en') { ?>
+                    <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $base_url . '/ar'; ?>" class="language">العربية</a></li>
+                <?php } else { ?>
+                    <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $base_url . '/en'; ?>" class="language">English</a></li>
+                <?php } ?>
                 <li class="social">
                     <?php include 'social.php'; ?>
                 </li>

@@ -205,7 +205,7 @@ function elsayed_get_site_base_url() {
 }
 
 function elsayed_get_languages() {
-    $languages = array('en' => 'English');
+    $languages = array('en' => 'English', 'ar' => 'Arabic');
     return $languages;
 }
 
