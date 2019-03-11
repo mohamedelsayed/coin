@@ -168,7 +168,7 @@ if (!empty($products)) {
     </section>
     <?php
 }
-include_once 'widgets' . DS . 'testimonial.php';
+//include_once 'widgets' . DS . 'testimonial.php';
 include_once 'widgets' . DS . 'features.php';
 include_once 'widgets' . DS . 'contact.php';
 include_once 'common' . DS . 'footer.php';

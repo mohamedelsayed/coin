@@ -2,6 +2,22 @@
 elsayed_redirect_user_to_admin();
 global $base_url;
 global $sitelang;
+$is_front_page = drupal_is_front_page();
+$link1 = '#home';
+$link2 = '#about';
+$link3 = '#team';
+$link4 = '#menu';
+$link5 = '#Offers';
+$link6 = '#testimonial';
+$link7 = '#contact';
+if (!$is_front_page) {
+    $link1 = $base_url . $link1;
+    $link2 = $base_url . $link2;
+    $link3 = $base_url . $link3;
+    $link4 = $base_url . $link4;
+    $link5 = $base_url . $link5;
+    $link6 = $base_url . $link6;
+}
 ?>
 <!-- PRE LOADER -->
 <section class="preloader">
@@ -26,14 +42,14 @@ global $sitelang;
         <!-- MENU LINKS -->
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-nav-first">
-                <li><a href="#home" class="smoothScroll">Home</a></li>
-                <li><a href="#about" class="smoothScroll">About</a></li>
-                <li><a href="#team" >Collections</a></li>
-                <li><a href="#menu" class="smoothScroll">New Arrival</a></li>
-                <li><a href="#Offers" class="smoothScroll">Offers</a></li>
-                <li><a href="#testimonial" class="smoothScroll">Testimonials</a></li>
-                <li><a href="#contact" class="smoothScroll">Contact</a></li>
-                <li><a href="#" class="language">العربية</a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link1; ?>" class="smoothScroll"><?php echo __('Home'); ?></a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link2; ?>" class="smoothScroll"><?php echo __('About'); ?></a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link3; ?>" class="smoothScroll" ><?php echo __('Collections'); ?></a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link4; ?>" class="smoothScroll"><?php echo __('New Arrival'); ?></a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link5; ?>" class="smoothScroll"><?php echo __('Offers'); ?></a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link6; ?>" class="smoothScroll"><?php echo __('Testimonials'); ?></a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link7; ?>" class="smoothScroll"><?php echo __('Contact'); ?></a></li>
+                <li><a hreflang="<?php echo $sitelang; ?>" href="#" class="language">العربية</a></li>
                 <li class="social">
                     <?php include 'social.php'; ?>
                 </li>
