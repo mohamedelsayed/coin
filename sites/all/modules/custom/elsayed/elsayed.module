@@ -7,9 +7,8 @@
  * @copyright Copyright (c) 2017 Programming by "http://www.mohamedelsayed.net"
  */
 function elsayed_init() {
-    elsayed_redirect_non_ssl_to_ssl();
+//    elsayed_redirect_non_ssl_to_ssl();
     elsayed_update_node_language();
-    $GLOBALS['google_api_key'] = 'AIzaSyDGGlo0fNATzYKU761Fx-8VAIJDXu-b3QM';
     $GLOBALS['limit'] = 12;
     $GLOBALS['default_image'] = $GLOBALS['base_url'] . '/' . path_to_theme() . '/img/blank.png';
     elsayed_redirect_admin_to_dashboard();
@@ -283,6 +282,7 @@ function elsayed_page_not_found_page() {
 }
 
 function elsayed_get_content_widget($type = 'slider') {
+    global $sitelang;
     $start = 0;
     $limit = 10;
     $items = array();
@@ -292,6 +292,7 @@ function elsayed_get_content_widget($type = 'slider') {
             ->propertyCondition('status', 1)
             ->propertyOrderBy('created', 'DESC');
     $query->addMetaData('account', user_load(1));
+    $query->fieldCondition('field_language', 'value', $sitelang, '=');
     $query->range($start, $limit);
     $result = $query->execute();
     if (isset($result['node'])) {
@@ -796,6 +797,7 @@ function elsayed_register_new_user($name, $mail, $pass1, $pass2, $field_first_na
 }
 
 function elsayed_get_products($limit = 0, $page = 1, $sectionId = 0, $new_arrival = 0, $hot_offers = 0) {
+    global $sitelang;
     $items = array();
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
@@ -813,6 +815,7 @@ function elsayed_get_products($limit = 0, $page = 1, $sectionId = 0, $new_arriva
     }
 //    $query->fieldOrderBy('field_weight', 'value', 'ASC');
     $query->addMetaData('account', user_load(1));
+    $query->fieldCondition('field_language', 'value', $sitelang, '=');
     $result = $query->execute();
     $total_items_nids = array();
     if (isset($result['node'])) {
@@ -1643,6 +1646,7 @@ function elsayed_custom_setting_form_validation($form, &$form_state) {
 }
 
 function elsayed_get_home_widgets() {
+    global $sitelang;
     $start = 0;
     $limit = 10;
     $items = array();
@@ -1652,6 +1656,7 @@ function elsayed_get_home_widgets() {
             ->propertyCondition('status', 1)
             ->propertyOrderBy('created', 'DESC');
     $query->addMetaData('account', user_load(1));
+    $query->fieldCondition('field_language', 'value', $sitelang, '=');
     $query->range($start, $limit);
     $result = $query->execute();
     if (isset($result['node'])) {
@@ -1804,6 +1809,7 @@ function elsayed_redirect_non_ssl_to_ssl() {
 }
 
 function elsayed_get_products_from_same_section($limit = 0, $sectionId = 0, $nid = 0) {
+    global $sitelang;
     $page = 1;
     $items = array();
     $query = new EntityFieldQuery();
@@ -1816,6 +1822,7 @@ function elsayed_get_products_from_same_section($limit = 0, $sectionId = 0, $nid
         $query->fieldCondition('field_section', 'target_id', $sectionId, '=');
     }
     $query->addMetaData('account', user_load(1));
+    $query->fieldCondition('field_language', 'value', $sitelang, '=');
     $result = $query->execute();
     $total_items_nids = array();
     if (isset($result['node'])) {
@@ -1838,6 +1845,7 @@ function elsayed_get_products_from_same_section($limit = 0, $sectionId = 0, $nid
 }
 
 function elsayed_get_sections($limit = 5) {
+    global $sitelang;
     $page = 1;
     $items = array();
     $query = new EntityFieldQuery();
@@ -1846,6 +1854,7 @@ function elsayed_get_sections($limit = 5) {
             ->propertyCondition('status', 1)
             ->propertyOrderBy('nid', 'ASC');
     $query->addMetaData('account', user_load(1));
+    $query->fieldCondition('field_language', 'value', $sitelang, '=');
     $result = $query->execute();
     $total_items_nids = array();
     if (isset($result['node'])) {

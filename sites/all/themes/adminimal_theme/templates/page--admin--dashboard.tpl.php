@@ -36,11 +36,19 @@
                 </a>
             </div>
             <div class="item col-md-1 ">
-                <a href="<?php echo $base_url . '/admin/custom/content/widget'; ?>">
+                <a href="<?php echo $base_url . '/admin/custom/content/section'; ?>">
                     <div class="icon">
-                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic2.png">
+                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic4.png">
                     </div>
-                    <h3><?php echo __('Widgets'); ?></h3>
+                    <h3><?php echo __('Sections'); ?></h3>
+                </a>
+            </div>
+            <div class="item col-md-1 ">
+                <a href="<?php echo $base_url . '/admin/custom/content/product'; ?>">
+                    <div class="icon">
+                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic5.png">
+                    </div>
+                    <h3><?php echo __('Products'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -52,19 +60,19 @@
                 </a>
             </div>
             <div class="item col-md-1 ">
-                <a href="<?php echo $base_url . '/admin/custom/content/project'; ?>">
+                <a href="<?php echo $base_url . '/admin/custom/content/testimonial'; ?>">
                     <div class="icon">
-                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic4.png">
+                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/certificates.png">
                     </div>
-                    <h3><?php echo __('Projects'); ?></h3>
+                    <h3><?php echo __('Testimonials'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
-                <a href="<?php echo $base_url . '/admin/custom/content/page'; ?>">
+                <a href="<?php echo $base_url . '/admin/custom/content/widget'; ?>">
                     <div class="icon">
-                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic5.png">
+                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic2.png">
                     </div>
-                    <h3><?php echo __('Pages'); ?></h3>
+                    <h3><?php echo __('Widgets'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -73,14 +81,6 @@
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic6.png">
                     </div>
                     <h3><?php echo __('Users'); ?></h3>
-                </a>
-            </div>
-            <div class="item col-md-1 ">
-                <a href="<?php echo $base_url . '/admin/custom/content/certificate'; ?>">
-                    <div class="icon">
-                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/certificates.png">
-                    </div>
-                    <h3><?php echo __('Certificates'); ?></h3>
                 </a>
             </div>
         </div>

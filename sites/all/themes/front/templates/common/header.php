@@ -35,7 +35,7 @@ if (!$is_front_page) {
                 <span class="icon icon-bar"></span>
             </button>
             <!-- lOGO TEXT HERE -->
-            <a href="<?php echo $base_url; ?>" class="navbar-brand">
+            <a href="<?php echo $base_url . '/' . $sitelang; ?>" class="navbar-brand">
                 <img src="<?php echo $base_url . '/' . path_to_theme() . '/images/'; ?>logo.png" />
             </a>
         </div>
@@ -49,11 +49,11 @@ if (!$is_front_page) {
                 <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link5; ?>" class="smoothScroll"><?php echo __('Offers'); ?></a></li>
                 <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link6; ?>" class="smoothScroll"><?php echo __('Testimonials'); ?></a></li>
                 <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $link7; ?>" class="smoothScroll"><?php echo __('Contact'); ?></a></li>
-                <?php if ($sitelang == 'en') { ?>
-                    <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $base_url . '/ar'; ?>" class="language">العربية</a></li>
-                <?php } else { ?>
-                    <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $base_url . '/en'; ?>" class="language">English</a></li>
-                <?php } ?>
+                <?php /* if ($sitelang == 'en') { ?>
+                  <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $base_url . '/ar'; ?>" class="language">العربية</a></li>
+                  <?php } else { ?>
+                  <li><a hreflang="<?php echo $sitelang; ?>" href="<?php echo $base_url . '/en'; ?>" class="language">English</a></li>
+                  <?php } */ ?>
                 <li class="social">
                     <?php include 'social.php'; ?>
                 </li>
