@@ -52,7 +52,7 @@ if (!empty($sections)) {
                         </div>
                         <div class="team-info">
                             <h3><a href="<?php echo $section_url; ?>"><?php echo $section_title; ?></a></h3>
-                            <p><?php echo $section_second_title; ?><</p>
+                            <p><?php echo $section_second_title; ?></p>
                         </div>
                     </div>
                 <?php } ?>
@@ -102,7 +102,7 @@ if (!empty($sections)) {
                                 <img src="<?php echo $image; ?>" class="img-responsive" alt="<?php echo $section_title; ?>">
                                 <div class="team-hover">
                                     <div class="team-item">
-                                        <h4>Check Our <?php echo $section_title; ?></h4>
+                                        <h4><?php echo __('Check Our') . ' ' . $section_title; ?></h4>
                                         <ul class="social-icon">
                                             <li><a href="<?php echo $section_url; ?>" class="fa fa-eye"></a></li>
                                         </ul>

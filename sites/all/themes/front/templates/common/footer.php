@@ -7,7 +7,7 @@ $isFooter = 1;
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-4">
-                <p><?php echo ('Copyright © COIN. All Rights Reserved.'); ?></p>
+                <p><?php echo __('Copyright © COIN. All Rights Reserved.'); ?></p>
             </div>
             <div class="col-md-6 col-sm-8">
                 <ul class="wow fadeInUp social-icon animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">

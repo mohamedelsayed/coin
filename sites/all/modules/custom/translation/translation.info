@@ -1,0 +1,8 @@
+name = "Translation"
+description = "Translation of static words."
+core = 7.x
+package = Mohamed Elsayed Drupal 7 Development
+configure = admin/custom/translation
+
+;version = "7.x-2.0″
+;datestamp = "1385568677″

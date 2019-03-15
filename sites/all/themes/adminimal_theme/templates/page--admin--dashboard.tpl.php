@@ -32,7 +32,7 @@
                     <div class="icon">
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic1.png">
                     </div>
-                    <h3><?php echo __('Settings'); ?></h3>
+                    <h3><?php echo t('Settings'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -40,7 +40,7 @@
                     <div class="icon">
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic4.png">
                     </div>
-                    <h3><?php echo __('Sections'); ?></h3>
+                    <h3><?php echo t('Sections'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -48,7 +48,7 @@
                     <div class="icon">
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic5.png">
                     </div>
-                    <h3><?php echo __('Products'); ?></h3>
+                    <h3><?php echo t('Products'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -56,7 +56,7 @@
                     <div class="icon">
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic3.png">
                     </div>
-                    <h3><?php echo __('Sliders'); ?></h3>
+                    <h3><?php echo t('Sliders'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -64,7 +64,7 @@
                     <div class="icon">
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/certificates.png">
                     </div>
-                    <h3><?php echo __('Testimonials'); ?></h3>
+                    <h3><?php echo t('Testimonials'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -72,7 +72,15 @@
                     <div class="icon">
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic2.png">
                     </div>
-                    <h3><?php echo __('Widgets'); ?></h3>
+                    <h3><?php echo t('Widgets'); ?></h3>
+                </a>
+            </div>
+            <div class="item col-md-1 ">
+                <a href="<?php echo $base_url . '/admin/custom/translation'; ?>">
+                    <div class="icon">
+                        <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/worlwide.png">
+                    </div>
+                    <h3><?php echo t('Translation'); ?></h3>
                 </a>
             </div>
             <div class="item col-md-1 ">
@@ -80,7 +88,7 @@
                     <div class="icon">
                         <img src="<?php echo $base_url . '/' . elsayed_get_admin_theme_path(); ?>/images/pic6.png">
                     </div>
-                    <h3><?php echo __('Users'); ?></h3>
+                    <h3><?php echo t('Users'); ?></h3>
                 </a>
             </div>
         </div>

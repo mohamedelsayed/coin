@@ -4,7 +4,7 @@
  * @author Author "Mohamed Elsayed"
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.mohamedelsayed.net
- * @copyright Copyright (c) 2017 Programming by "http://www.mohamedelsayed.net"
+ * @copyright Copyright (c) 2019 Programming by "http://www.mohamedelsayed.net"
  */
 function elsayed_init() {
 //    elsayed_redirect_non_ssl_to_ssl();
@@ -30,7 +30,7 @@ function elsayed_menu() {
         'access arguments' => array('access content')
     );
     $items['contact-us-form'] = array(
-        'title' => __('Contact us'),
+        'title' => t('Contact us'),
         'page callback' => 'elsayed_contact_us_form',
         'page arguments' => array(),
         'type' => MENU_CALLBACK,
@@ -38,7 +38,7 @@ function elsayed_menu() {
         'delivery callback' => 'drupal_json_output',
     );
 //    $items['register-form'] = array(
-//        'title' => __('Register'),
+//        'title' => t('Register'),
 //        'page callback' => 'elsayed_register_form_custom',
 //        'page arguments' => array(),
 //        'type' => MENU_CALLBACK,
@@ -68,7 +68,7 @@ function elsayed_menu() {
 //        'delivery callback' => 'drupal_json_output',
 //    );
 //    $items['change_currency'] = array(
-//        'title' => __('Change Currency'),
+//        'title' => t('Change Currency'),
 //        'page callback' => 'elsayed_change_currency',
 //        'page arguments' => array(),
 //        'type' => MENU_CALLBACK,
@@ -370,15 +370,15 @@ function elsayed_contact_us_form() {
 //                }
 //                if ($recaptchaflag == 1) {
                 if ($mail->send()) {
-                    //$data['msg'] = __('Thank you for your message. We will get back to you the soonest.');
+                    //$data['msg'] = t('Thank you for your message. We will get back to you the soonest.');
                     $data['error'] = 0;
                 } else {
 //                    echo $mail->ErrorInfo;
-                    //$data['msg'] = __('There was a problem sending the Email. Please try again.');
+                    //$data['msg'] = t('There was a problem sending the Email. Please try again.');
                     $data['error'] = 1;
                 }
 //                } else {
-//                    //$data['msg'] = __('There was a problem sending the Email. Please try again.');
+//                    //$data['msg'] = t('There was a problem sending the Email. Please try again.');
 //                    $data['error'] = 1;
 //                }
             }
@@ -546,7 +546,7 @@ function elsayed_page_validate(&$form, &$form_state) {
         $items = entity_load('node', $items_nids);
     }
     if (!empty($items)) {
-        form_set_error('title', __("Content can't be added."));
+        form_set_error('title', t("Content can't be added."));
     }
 }
 
@@ -573,7 +573,7 @@ function elsayed_contact_us_validate(&$form, &$form_state) {
         $items = entity_load('node', $items_nids);
     }
     if (!empty($items)) {
-        form_set_error('title', __("Content can't be added."));
+        form_set_error('title', t("Content can't be added."));
     }
 }
 
@@ -647,58 +647,58 @@ function elsayed_validate_register_new_user($name, $mail, $pass1, $pass2, $field
     $name_arr = explode(' ', $name);
     if (strpos($name, ' ') > 0 || $name_arr[0] == '' || $hasUpperCaseLetter) {
         $output['error'] = TRUE;
-        $output['msg']['name'] = __('Usernames cannot contain spaces or capital letters.');
+        $output['msg']['name'] = t('Usernames cannot contain spaces or capital letters.');
         //t('Usernames cannot contain spaces or capital letters.');
     }
     $user = user_load_by_name($name);
     if ($user) {
         $output['error'] = TRUE;
-        $output['msg']['name'] = __('Username already exists.');
+        $output['msg']['name'] = t('Username already exists.');
         //t('Username already exists.');
     }
     if (strlen($name) < 1) {
         $output['error'] = TRUE;
-        $output['msg']['name'] = __('Username is required.');
+        $output['msg']['name'] = t('Username is required.');
         //t('Username is required.');
     }
     if ($mail_exist) {
         $output['error'] = TRUE;
-        $output['msg']['mail'] = __('Email already exists.');
+        $output['msg']['mail'] = t('Email already exists.');
         //t('Email already exists.');
     }
     if ($name_mail_exist1) {
         $output['error'] = TRUE;
-        $output['msg']['name'] = __('Email or Username already exists.');
+        $output['msg']['name'] = t('Email or Username already exists.');
         //t('Email already exists.');
     }
     if ($name_mail_exist2) {
         $output['error'] = TRUE;
-        $output['msg']['mail'] = __('Email or Username already exists.');
+        $output['msg']['mail'] = t('Email or Username already exists.');
         //t('Email already exists.');
     }
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
         $output['error'] = TRUE;
-        $output['msg']['mail'] = __('Email is not valid.');
+        $output['msg']['mail'] = t('Email is not valid.');
         //t('Email is not valid.');
     }
     if (strlen($pass1) < 6) {
         $output['error'] = TRUE;
-        $output['msg']['pass'] = __('Password must be at least 6 characters.');
+        $output['msg']['pass'] = t('Password must be at least 6 characters.');
         //t('Password must be at least 6 characters.');
     }
     if ($pass1 != $pass2) {
         $output['error'] = TRUE;
-        $output['msg']['pass'] = __("Passwords don't match.");
+        $output['msg']['pass'] = t("Passwords don't match.");
         //t("Passwords don't match.");
     }
     if (strlen($field_first_name) < 1) {
         $output['error'] = TRUE;
-        $output['msg']['field_first_name'] = __('First Name is required.');
+        $output['msg']['field_first_name'] = t('First Name is required.');
         //t('First Name is required.');
     }
     if (strlen($field_last_name) < 1) {
         $output['error'] = TRUE;
-        $output['msg']['field_last_name'] = __('Last Name is required.');
+        $output['msg']['field_last_name'] = t('Last Name is required.');
         //t('Last Name is required.');
     }
     if ($output['error'] == TRUE) {
@@ -731,7 +731,7 @@ function elsayed_register_new_user($name, $mail, $pass1, $pass2, $field_first_na
       $form_state['values']['pass']['pass2'] = $pass2;
       $form_state['values']['field_first_name'][LANGUAGE_NONE][0]['value'] = $field_first_name;
       $form_state['values']['field_last_name'][LANGUAGE_NONE][0]['value'] = $field_last_name;
-      $form_state['values']['op'] = __('Create new account');
+      $form_state['values']['op'] = t('Create new account');
       drupal_form_submit('user_register_form', $form_state); */
     /* $new_user = array(
       'name' => $name,
@@ -778,8 +778,8 @@ function elsayed_register_new_user($name, $mail, $pass1, $pass2, $field_first_na
           <p><a href="'.$GLOBALS['base_url'].'/verifyuser/'.$account->uid.'/'.$token.'">'.$GLOBALS['base_url'].'/verifyuser/'.$account->uid.'/'.$token.'</a></p>
           Thank you for your understanding, and we look forward to seeing you on '.variable_get('site_name').'.';
          */
-        /* $message = __('Thank you for registering at', $sitelang).' '.variable_get('site_name').'.'.__('Your username is', $sitelang).': '.$account->name.'<p>'.__('To protect our serious users from unwanted registrations, it is important that you validate your registration', $sitelang).' '.__('by visiting the following URL', $sitelang).': </p>
-          <p><a href="'.$GLOBALS['base_url'].'/verifyuser/'.$account->uid.'/'.$token.'">'.$GLOBALS['base_url'].'/verifyuser/'.$account->uid.'/'.$token.'</a></p>'.__('Thank you for your understanding, and we look forward to seeing you on', $sitelang).' '.variable_get('site_name').'.';
+        /* $message = t('Thank you for registering at', $sitelang).' '.variable_get('site_name').'.'.t('Your username is', $sitelang).': '.$account->name.'<p>'.t('To protect our serious users from unwanted registrations, it is important that you validate your registration', $sitelang).' '.t('by visiting the following URL', $sitelang).': </p>
+          <p><a href="'.$GLOBALS['base_url'].'/verifyuser/'.$account->uid.'/'.$token.'">'.$GLOBALS['base_url'].'/verifyuser/'.$account->uid.'/'.$token.'</a></p>'.t('Thank you for your understanding, and we look forward to seeing you on', $sitelang).' '.variable_get('site_name').'.';
 
           $base_url = $GLOBALS['base_url'].'/'.path_to_theme();
           $url_message = $GLOBALS['base_url'].'/verifyuser/'.$account->uid.'/'.$token ;
@@ -1523,27 +1523,12 @@ function elsayed_get_categories_by_type($category_type = 1) {
     return $categories;
 }
 
-function elsayed_get_header_menu() {
-    global $base_url;
-    $items = array();
-    $active_class = 'active';
-    $class = '';
-    $is_front_page = drupal_is_front_page();
-    if ($is_front_page) {
-        $class = $active_class;
-    }
-    $items[] = array('title' => __('Home'), 'link' => $base_url, 'class' => $class);
-    $class = '';
-    $items[] = array('title' => __('About me'), 'link' => $base_url, 'class' => $class);
-    $class = '';
-    $items[] = array('title' => __('Projects'), 'link' => $base_url, 'class' => $class);
-    $class = '';
-    $items[] = array('title' => __('Contact Us'), 'link' => $base_url, 'class' => $class);
-    return $items;
-}
-
 function __($string = '', $lang = '') {
-    return $string;
+    if (function_exists('translation_get_string')) {
+        return translation_get_string($string);
+    } else {
+        return $string;
+    }
 }
 
 function elsayed_access_denied() {
@@ -1555,81 +1540,88 @@ function elsayed_custom_setting_form($form, &$form_state) {
     $is_user_admin = elsayed_is_user_admin();
     if ($is_user_admin) {
         $form['site_name'] = array(
-            '#title' => __('Site Name'),
-            '#discription' => __(''),
+            '#title' => t('Site Name'),
+            '#discription' => t(''),
             '#type' => 'textfield',
             '#required' => true,
             '#default_value' => variable_get('site_name', ''),
         );
         $form['contact_mail'] = array(
-            '#title' => __('Contact Email'),
-            '#discription' => __(''),
+            '#title' => t('Contact Email'),
+            '#discription' => t(''),
             '#type' => 'textfield',
             '#required' => true,
             '#default_value' => variable_get('contact_mail', ''),
         );
         $form['facebook_url'] = array(
-            '#title' => __('Facebook URL'),
-            '#discription' => __(''),
+            '#title' => t('Facebook URL'),
+            '#discription' => t(''),
             '#type' => 'textfield',
             '#required' => false,
             '#default_value' => variable_get('facebook_url', ''),
         );
         $form['twitter_url'] = array(
-            '#title' => __('Twitter URL'),
-            '#discription' => __(''),
+            '#title' => t('Twitter URL'),
+            '#discription' => t(''),
             '#type' => 'textfield',
             '#required' => false,
             '#default_value' => variable_get('twitter_url', ''),
         );
         $form['instagram_url'] = array(
-            '#title' => __('Instagram URL'),
-            '#discription' => __(''),
+            '#title' => t('Instagram URL'),
+            '#discription' => t(''),
             '#type' => 'textfield',
             '#required' => false,
             '#default_value' => variable_get('instagram_url', ''),
         );
 //        $form['google_plus_url'] = array(
-//            '#title' => __('Google Plus URL'),
-//            '#discription' => __(''),
+//            '#title' => t('Google Plus URL'),
+//            '#discription' => t(''),
 //            '#type' => 'textfield',
 //            '#required' => false,
 //            '#default_value' => variable_get('google_plus_url', ''),
 //        );
 //        $form['linkedin_url'] = array(
-//            '#title' => __('Linkedin URL'),
-//            '#discription' => __(''),
+//            '#title' => t('Linkedin URL'),
+//            '#discription' => t(''),
 //            '#type' => 'textfield',
 //            '#required' => false,
 //            '#default_value' => variable_get('linkedin_url', ''),
 //        );
 //        $form['codecademy_url'] = array(
-//            '#title' => __('Codecademy URL'),
-//            '#discription' => __(''),
+//            '#title' => t('Codecademy URL'),
+//            '#discription' => t(''),
 //            '#type' => 'textfield',
 //            '#required' => false,
 //            '#default_value' => variable_get('codecademy_url', ''),
 //        );
 //        $form['mostaql_url'] = array(
-//            '#title' => __('Mostaql URL'),
-//            '#discription' => __(''),
+//            '#title' => t('Mostaql URL'),
+//            '#discription' => t(''),
 //            '#type' => 'textfield',
 //            '#required' => false,
 //            '#default_value' => variable_get('mostaql_url', ''),
 //        );
 //        $form['hackerrank_url'] = array(
-//            '#title' => __('Hackerrank URL'),
-//            '#discription' => __(''),
+//            '#title' => t('Hackerrank URL'),
+//            '#discription' => t(''),
 //            '#type' => 'textfield',
 //            '#required' => false,
 //            '#default_value' => variable_get('hackerrank_url', ''),
 //        );
         $form['google_analytics_propertyid'] = array(
-            '#title' => __('Google Analytics Property ID'),
-            '#discription' => __(''),
+            '#title' => t('Google Analytics Property ID'),
+            '#discription' => t(''),
             '#type' => 'textfield',
             '#required' => false,
             '#default_value' => variable_get('google_analytics_propertyid', ''),
+        );
+        $form['enable_arabic_version'] = array(
+            '#title' => t('Enable Arabic Version'),
+            '#discription' => t(''),
+            '#type' => 'checkbox',
+            '#required' => false,
+            '#default_value' => variable_get('enable_arabic_version', 0),
         );
         $form['#validate'][] = 'elsayed_custom_setting_form_validation';
         return system_settings_form($form);
@@ -1643,7 +1635,7 @@ function elsayed_custom_setting_form_validation($form, &$form_state) {
     $contact_mail = $form_state['values']['contact_mail'];
     if (trim($contact_mail) != '') {
         if (filter_var($contact_mail, FILTER_VALIDATE_EMAIL) === false) {
-            form_set_error('contact_mail', __('Email must be valid.'));
+            form_set_error('contact_mail', t('Email must be valid.'));
         }
     }
 }
@@ -1745,7 +1737,7 @@ function elsayed_video_node_form_form_validation($form, &$form_state) {
     }
     if (trim($field_youtube_link) != '') {
         if (!(strpos($field_youtube_link, 'youtube') > 0)) {
-            form_set_error('field_youtube_link', __('Please enter valid Youtube link.'));
+            form_set_error('field_youtube_link', t('Please enter valid Youtube link.'));
         }
     }
 }
@@ -1877,4 +1869,37 @@ function elsayed_get_sections($limit = 5) {
         $return = $items;
     }
     return $return;
+}
+
+function elsayed_update_7103() {
+    $schema = array(
+        'description' => 'The base table for translation.',
+        'fields' => array(
+            'id' => array(
+                'type' => 'serial',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ),
+            'k' => array(
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => FALSE,
+                'default' => '',
+            ),
+            'ar' => array(
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => FALSE,
+                'default' => '',
+            ),
+            'en' => array(
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => FALSE,
+                'default' => '',
+            ),
+        ),
+        'primary key' => array('id'),
+    );
+    db_create_table('translation', $schema);
 }

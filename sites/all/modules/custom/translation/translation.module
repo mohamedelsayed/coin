@@ -1,0 +1,218 @@
+<?php
+
+/**
+ * @author Author "Mohamed Elsayed"
+ * @author Author Email "me@mohamedelsayed.net"
+ * @link http://www.mohamedelsayed.net
+ * @copyright Copyright (c) 2019 Programming by "http://www.mohamedelsayed.net"
+ */
+function translation_init() {
+
+}
+
+function translation_menu() {
+//    $items['admin/custom/translation/add'] = array(
+//        'title' => 'Create Translation',
+//        'page callback' => 'translation_add',
+//        'access arguments' => array('access translation'),
+//        'weight' => -14,
+//    );
+    $items['admin/custom/translation/%/edit'] = array(
+        'title' => 'Edit Translation',
+        'page callback' => 'translation_edit',
+        'page argument' => array(3),
+        'access arguments' => array('access translation'),
+        'weight' => -14,
+    );
+//    $items['admin/custom/translation/%/delete'] = array(
+//        'title' => 'Delete Translation',
+//        'page callback' => 'translation_delete',
+//        'page argument' => array(3),
+//        'access arguments' => array('access translation'),
+//        'weight' => -14,
+//    );
+    $items['admin/custom/translation'] = array(
+        'title' => 'Translation',
+        'page callback' => 'translation_sort_with_pager_content',
+        'access arguments' => array('access translation'),
+        'weight' => -14,
+    );
+    return $items;
+}
+
+function translation_edit($block_name = '') {
+    if (drupal_is_front_page()) {
+        return null;
+    }
+    $form = drupal_get_form('translation_edit_form');
+    $block = array(
+        'content' => $form,
+    );
+    return $block;
+}
+
+function translation_edit_form($form, &$form_state) {
+    $id = arg(3);
+    $result = db_query('SELECT * FROM {translation} WHERE id = :id', array(':id' => $id))->fetchObject();
+    $form['k'] = array(
+        '#type' => 'textfield',
+        '#maxlength' => 250,
+        '#title' => 'Key',
+        '#value' => $result->k,
+        '#required' => true,
+        '#attributes' => ['readonly' => 'readonly'],
+    );
+    $form['en'] = array(
+        '#type' => 'textfield',
+        '#title' => 'EN',
+        '#value' => $result->en,
+        '#required' => false,
+    );
+    $form['ar'] = array(
+        '#type' => 'textfield',
+        '#title' => 'AR',
+        '#value' => $result->ar,
+        '#required' => false,
+    );
+    $form['id'] = array(
+        '#type' => 'hidden',
+        '#value' => t($id),
+    );
+    $form['actions']['submit'] = array(
+        '#type' => 'submit',
+        '#value' => t('Save'),
+        '#prefix' => '<div id="edit-actions" class="form-actions form-wrapper">',
+    );
+    $query = array();
+    $destination = 'admin/custom/translation';
+    $form['actions']['cancel'] = array(
+        '#markup' => l(t('Cancel'), ($destination), array('query' => $query, 'attributes' => array('class' => array('cancel', 'form-submit')))),
+        '#weight' => 20,
+        '#suffix' => '</div>',
+    );
+//    $form['#validate'][] = 'key_validate_translationkey_edit_validate';
+    $form['#submit'][] = 'translation_edit_submit_handler';
+    return $form;
+}
+
+function translation_edit_submit_handler($form, &$form_state) {
+    $translation_id = arg(3);
+    $k = $form_state['input']['k'];
+    $ar = $form_state['input']['ar'];
+    $en = $form_state['input']['en'];
+    $result = db_update('translation')
+            ->fields(array(
+                'k' => $k,
+                'ar' => $ar,
+                'en' => $en))
+            ->condition('id', $translation_id, '=')
+            ->execute();
+    drupal_set_message(t('Translation has been updated!'));
+    drupal_goto("admin/custom/translation");
+}
+
+function translation_sort_with_pager_content() {
+    $header = array(
+        array('data' => t('id'), 'field' => 'id', 'sort' => 'desc'),
+        array('data' => t('Key'), 'field' => 'k', 'sort' => 'desc'),
+        array('data' => t('EN'), 'field' => 'en', 'sort' => 'desc'),
+        array('data' => t('AR'), 'field' => 'ar', 'sort' => 'desc'),
+        array('data' => t('Operations')),
+    );
+    $query = db_select('translation', 's');
+    $query->fields('s', array('id', 'k', 'ar', 'en'));
+    $table_sort = $query->extend('TableSort')
+            ->orderByHeader($header);
+    $pager = $table_sort->extend('PagerDefault')
+            ->limit(50);
+    $result = $pager->execute();
+    $rows = array();
+    $output = '';
+//    $output = '<ul class="action-links"><li><a href="translation/add">Add new</a></li></ul>';
+    foreach ($result as $res) {
+        $rows[] = array($res->id,
+            "<span class='wrap-title'>" . $res->k . "</span>",
+            "<span class='wrap-title'>" . $res->en . "</span>",
+            "<span class='wrap-title'>" . $res->ar . "</span>",
+            "<a title='Edit' href='translation/$res->id/edit'><i class='fa fa-pencil' aria-hidden='true'></i>" . t('Edit') . "</a>"
+        );
+    }
+    if (!empty($rows)) {
+        $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => 'sort-table')));
+        $output .= theme('pager');
+    } else {
+        $output .= t("No results found.");
+    }
+    return $output;
+}
+
+function translation_permission() {
+    return array(
+        'access translation' => array(
+            'title' => t('Administer Translation'),
+            'description' => t('Customizing the Translation requires the !permission-name permission.', array(
+                '!permission-name' => l(t('Administer blocks'), 'admin/people/permissions', array('fragment' => 'module-block')),
+            )),
+        ),
+    );
+}
+
+//function key_validate_translationkey_edit_validate($form, &$form_state) {
+//    $id = $form_state['input']['id'];
+//    $translationkey_input = $form_state['input']['translation_key'];
+//    $translationkey = str_replace(' ', '', $translationkey_input);
+//
+//    if (empty($translationkey)) {
+//        $form_state['input']['translation_key'] = $id . time();
+//    } else {
+//        $result = db_query('SELECT * FROM {translation} WHERE (p_key= :p_key) AND (id != :id)  ', array(':p_key' => $translationkey, ':id' => $id))->fetchObject();
+////update keies with section
+//        if (!empty($result)) {
+//            form_set_error('p_key', 'this key already exist');
+//        }
+//    }
+//}
+function translation_get_string($string = '') {
+    global $sitelang;
+    $flag = 0;
+    $string_in = $string;
+    $suffix = '';
+//    $suffix = ' ' . $sitelang;
+    if (!isset($GLOBALS['translation_strings'])) {
+        $result = db_query("SELECT t.k AS key_in, t." . $sitelang . " AS value
+                                FROM {translation} t
+                                ", [])->fetchAllKeyed();
+        $result = array_change_key_case($result); // Convert all keys to lower
+        $GLOBALS['translation_strings'] = $result;
+    }
+    $data = $GLOBALS['translation_strings'];
+    $string = strtolower(trim($string));
+    if (isset($data[$string])) {
+        if (trim($data[$string]) != '') {
+            $flag = 1;
+            return $data[$string] . $suffix;
+        }
+    } else {
+        translation_check_and_add_translation_key($string);
+    }
+    if ($flag == 0) {
+        $flag = 1;
+        return $string_in . $suffix;
+    }
+}
+
+function translation_check_and_add_translation_key($key) {
+    if ($key != '') {
+        $result = db_query('SELECT * FROM {translation} '
+                . 'WHERE (k= :k)', array(':k' => $key))->fetchObject();
+        $key_id = 0;
+        if (empty($result)) {
+            $key_id = db_insert('translation')
+                            ->fields(array(
+                                'k' => $key,
+                            ))->execute();
+        } else {
+            $key_id = $result->id;
+        }
+    }
+}
