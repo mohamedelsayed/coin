@@ -27,7 +27,9 @@ if (!empty($testimonials_widget)) {
                             }
                             ?>
                             <div class="item">
-                                <p><?php echo $testimonial_body; ?></p>
+                                <div>
+                                    <?php echo $testimonial_body; ?>
+                                </div>
                                 <div class="tst-author">
                                     <h4><?php echo $testimonial_name; ?></h4>
                                     <span><?php echo $testimonial_job; ?></span>
